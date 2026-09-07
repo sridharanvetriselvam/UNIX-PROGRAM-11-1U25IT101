@@ -1,0 +1,30 @@
+name: Linux Tail Command Autograding
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Give Execute Permission
+      run: |
+        chmod +x starter/solution.sh
+        chmod +x tests/test_tail.sh
+
+    - name: Run Auto Grading
+      run: |
+        bash tests/test_tail.sh
